@@ -3,6 +3,7 @@ package com.mxp.java8;
 import com.mxp.model.Student;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -93,7 +94,7 @@ public class TestStreamAPI3 {
     //分区
     @Test
     public void test6(){
-
+        System.out.println(LocalDateTime.now());
     }
 
     //多级分组
@@ -114,8 +115,15 @@ public class TestStreamAPI3 {
     //分组
     @Test
     public void test4(){
-        Map<Student.Status, List<Student>> s1 = students.stream().collect(Collectors.groupingBy((x) -> x.getStatus()));
-        System.out.println(s1);
+        Map<Object, List<Student>> s1 = students.stream().collect(Collectors.groupingBy((x) -> x.getStatus()));
+        List<Student> list = new ArrayList();
+        s1.forEach((k,v) -> {
+            Student students = new Student();
+            students.setStatus((Student.Status) k);
+            students.setCount(v.size());
+            list.add(students);
+        });
+        System.out.println(list);
     }
 
     @Test

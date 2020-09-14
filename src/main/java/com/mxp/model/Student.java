@@ -9,6 +9,15 @@ public class Student {
 
     private Status status;
 
+    private Integer count;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public Integer getId() {
         return id;
@@ -85,6 +94,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", status=" + status +
+                ", count=" + count +
                 '}';
     }
 
